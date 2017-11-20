@@ -4,7 +4,6 @@
   "license": "ISC",
   "dependencies": {
     "noble": "git://github.com/PolideaInternal/noble.git#macos_highsierra",
-    "node-ruuvitag": "^3.2.0",
     "tty-table": "^2.5.5"
   }
 }
