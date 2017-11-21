@@ -3,7 +3,8 @@ const table = require('tty-table');
 
 function render(rows) {
   const config = {
-    'a33fa6e3a91546b9b56dcb597925cd0a': 'Korjaamo',
+    // 'a33fa6e3a91546b9b56dcb597925cd0a': 'Korjaamo',
+    'bdb542ca1ca04cb482a407c925f377ea': 'Korjaamo',
     '61f62c2dc0df4a2ab44a1e852bfa434b': 'Verstas',
     'f160631cd2cd47f4b734bbd5435f02ac': 'Tupa',
     'a79066cbd8c142f59bba4e3515a8389c': 'Lintulauta',
