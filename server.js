@@ -2,22 +2,12 @@ const noble = require('noble');
 const table = require('tty-table');
 
 function render(rows) {
-  const config = {
-    // 'a33fa6e3a91546b9b56dcb597925cd0a': 'Korjaamo',
-    'bdb542ca1ca04cb482a407c925f377ea': 'Korjaamo',
-    '61f62c2dc0df4a2ab44a1e852bfa434b': 'Verstas',
-    'f160631cd2cd47f4b734bbd5435f02ac': 'Tupa',
-    'a79066cbd8c142f59bba4e3515a8389c': 'Lintulauta',
-    // '03e7e7acc86a4cd7a77c4807b3c74ee9': 'Olohuone'
-    '0c8eb6fc70064c6090e3840ddd9c2752': 'Olohuone'
-  };
+  const config = {};
   const cols = [
-    { 
+    {
       value: 'id', alias: 'ID',
       headerAlign: 'left', align: 'left', paddingLeft: 1, paddingRight: 0,
-      formatter: value => {
-        return config[value] || value.slice(-6);
-      }
+      formatter: value => config[value] || value
     },
     // { value: 'rssi', alias: 'RSSI' },
     { value: 'humidity', alias: 'Humidity %', formatter: n => n.toFixed(1) },
@@ -77,8 +67,8 @@ Object.keys(parse).forEach(key => {
 var rowsById = {};
 
 noble.on('discover', peripheral => {
-  const str = peripheral.advertisement.manufacturerData.toString('hex');
-  // 9904
+  const str = (peripheral.advertisement.manufacturerData || '').toString('hex');
+  if (!str.startsWith('9904')) return;
   let row = rowsById[peripheral.id];
   if (!row) {
     row = { id: peripheral.id, updates: 0 };
